@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>TiaAgent.Host</AssemblyName>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="ModelContextProtocol" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.12" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TiaAgent.Contracts\TiaAgent.Contracts.csproj" />
+  </ItemGroup>
+  <Target Name="BuildV21Worker" BeforeTargets="Build">
+    <MSBuild Projects="..\TiaAgent.Worker.V21\TiaAgent.Worker.V21.csproj"
+             Targets="Build"
+             Properties="Configuration=$(Configuration);TiaPortalV21Dir=$(TiaPortalV21Dir)"
+             RemoveProperties="TargetFramework;TargetFrameworks;RuntimeIdentifier;SelfContained" />
+  </Target>
+  <Target Name="CopyV21Worker" AfterTargets="Build">
+    <ItemGroup>
+      <WorkerFiles Include="..\TiaAgent.Worker.V21\bin\$(Configuration)\net48\**\*.*"
+                   Exclude="..\TiaAgent.Worker.V21\bin\$(Configuration)\net48\Siemens.Engineering*.dll" />
+      <!-- TIA may retain this directory as its working directory after the
+           worker exits. Prune obsolete files without removing the directory. -->
+      <ObsoleteWorkerFiles Include="$(OutputPath)openness-worker\**\*.*"
+          Exclude="@(WorkerFiles->'$(OutputPath)openness-worker\%(RecursiveDir)%(Filename)%(Extension)')" />
+    </ItemGroup>
+    <Delete Files="@(ObsoleteWorkerFiles)" />
+    <Copy SourceFiles="@(WorkerFiles)"
+          DestinationFiles="@(WorkerFiles->'$(OutputPath)openness-worker\%(RecursiveDir)%(Filename)%(Extension)')"
+          SkipUnchangedFiles="true" />
+  </Target>
+</Project>

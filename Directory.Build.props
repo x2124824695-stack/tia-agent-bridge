@@ -1,0 +1,11 @@
+<Project>
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+    <Version>0.2.0</Version>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <!-- Default Openness reference path. Prefer the standard C: install, otherwise fall back to the D: install. -->
+    <TiaPortalV21Dir Condition="'$(TiaPortalV21Dir)' == '' and Exists('C:\Program Files\Siemens\Automation\Portal V21\PublicAPI\V21\net48\Siemens.Engineering.Base.dll')">C:\Program Files\Siemens\Automation\Portal V21\PublicAPI\V21\net48</TiaPortalV21Dir>
+    <TiaPortalV21Dir Condition="'$(TiaPortalV21Dir)' == ''">D:\Program Files\Siemens\Automation\Portal V21\PublicAPI\V21\net48</TiaPortalV21Dir>
+  </PropertyGroup>
+</Project>
