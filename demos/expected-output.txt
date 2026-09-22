@@ -1,0 +1,23 @@
+PASS initialize: live MCP stdio handshake
+PASS tools/list: 16 registered tools
+  browse_project_tree
+  export_object
+  find_references
+  get_all_block_sources
+  get_block_source
+  get_capabilities
+  get_command_status
+  get_compile_messages
+  get_object_info
+  get_project_status
+  get_project_structure
+  get_task_config
+  list_device_repository
+  list_project_libraries
+  recover_session
+  search_code
+PASS get_capabilities: structured response received
+PASS access: write/online tools absent from read-only discovery
+PASS status: idle
+PASS refusal: write unavailable in inspect mode
+DONE: real protocol demonstration; no IDE or PLC acceptance claimed

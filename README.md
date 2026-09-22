@@ -1,5 +1,11 @@
 # TiaAgentBridge 0.2
 
+## Demo
+
+[运行演示与流程图](demos/README.md) · [实测终端输出](demos/expected-output.txt)
+
+通过真实 MCP 服务演示工具发现、能力查询和权限限制，无需连接 PLC。
+
 Siemens TIA Portal V21 MCP bridge: .NET 10 Host → persistent .NET Framework 4.8 Worker → Siemens Openness.
 
 本次按本机汇川 InoProShop MCP 1.1 源码逐项对照后扩展。**工程模式从 6 个工具扩展到 27 个；尚未全部对齐汇川，也未完成真实工程/PLC 验收。** 完整映射、原生 API 依据、操作示例和未完成项见 [功能对照与实现记录](docs/V0.2_PARITY.zh-CN.md)。
