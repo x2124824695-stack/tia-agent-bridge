@@ -1,5 +1,6 @@
 # TiaAgentBridge 0.2
 An MCP bridge that lets Codex inspect, understand, and safely engineer Siemens TIA Portal projects.
+
 TiaAgentBridge connects an MCP-compatible AI client to Siemens TIA Portal V21 through Siemens Openness. Its primary goal is not to make AI “control a PLC”, but to help automation and electrical engineers understand large PLC projects faster: project structure, OB/FB/FC/DB relationships, source code, cross references, state-machine logic, tags, hardware configuration, compile diagnostics, and engineering changes.
 ## Demo
 
