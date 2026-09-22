@@ -1,5 +1,5 @@
 # TiaAgentBridge 0.2
-
+An MCP bridge that lets Codex inspect, understand, and safely engineer Siemens TIA Portal projects.
 ## Demo
 
 [运行演示与流程图](demos/README.md) · [实测终端输出](demos/expected-output.txt)
